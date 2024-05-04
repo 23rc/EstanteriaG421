@@ -1,17 +1,36 @@
-<body>
-    <div class="container">
-        <div class="input-group mb-3">
-          <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
-          </div>
-        </div>
-      
-        <div class="row" *ngFor="let fila of filas; let i = index">
-          <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados[i][j]}">
-            {{ laboratorio }}
-          </div>
+<div class="container">
+    <div class="header">
+      <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
+      <h1 id="estanteria1">ESTANTERÍA 1</h1>
+    </div>
+    <div class="search-container">
+      <div class="input-group col-sm-6">
+        <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
         </div>
       </div>
-
-</body>
+    </div>
+    <div class="estanteria" >
+      <!-- Estantería 1 -->
+      <div class="row" *ngFor="let fila of estanteria1; let i = index">
+        <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados1[i][j]}">
+          {{ laboratorio }}
+        </div>
+      </div>
+    </div>
+  
+    <div class="header">
+      <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
+      <h1 id="estanteria2">ESTANTERÍA 2</h1>
+    </div>
+    <div class="estanteria">
+      <!-- Estantería 2 -->
+      <div class="row" *ngFor="let fila of estanteria2; let i = index">
+        <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados2[i][j]}">
+          {{ laboratorio }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

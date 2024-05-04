@@ -1,7 +1,26 @@
 .container {
-    padding: 20px;
+    padding:30px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+  
+  .logo {
+    max-width: 200px; /* Ajusta el tamaño del logo según tu necesidad */
+  }
+  
+  .content {
+    padding: 10px;
+
+  }
+  
+  .header h1 {
+    margin: 0 auto; /* Centra horizontalmente el h1 */
 
   }
   
@@ -15,17 +34,30 @@
     border-radius: 5px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
   }
-    
-/* Estilos específicos para dispositivos móviles */
-@media (max-width: 767px) {
+  
+  .search-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    padding: 10px;
+  }
+  
+  .estanteria {
+    margin-top: 20px; /* Agrega un espacio entre el buscador y las estanterías */
+  }
+  
+  /* Estilos específicos para dispositivos móviles */
+  @media (max-width: 767px) {
     .container {
       border-radius: 5px;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
-
     }
+  
     .row {
-        margin-bottom: 10px;
-      }
+      margin-bottom: 10px;
+    }
+  
     .col {
       padding: 5px;
       border-radius: 3px;
@@ -34,8 +66,9 @@
       min-width: 5px;
     }
   }
-/* Estilos específicos para dispositivos de tamaño de tablet */
-@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /* Estilos específicos para dispositivos de tamaño de tablet */
+  @media (min-width: 768px) and (max-width: 1024px) {
     .container {
       padding: 15px;
       border-radius: 8px;
@@ -48,6 +81,18 @@
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
       font-size: 10px; /* Reducir el tamaño de las letras */
     }
-}
-
-  /* Estilos específicos para dispositivos de tamaño de tablet */
+  }
+  .estanteria {
+    margin-top: 20px; /* Agrega un espacio entre el buscador y las estanterías */
+    padding-top: 50px; /* Ajusta el espacio para compensar el buscador flotante */
+  }
+  
+  .search-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px; /* Añade margen inferior para evitar superposición con la estantería */
+  }
+  

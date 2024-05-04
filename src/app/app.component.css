@@ -4,32 +4,9 @@ body {
     font-family: Arial, sans-serif;
   }
 
-  .header {
-    display: flex;
-    align-items: center;
-    background-color: #f1f1f1;
-    padding: 10px;
-  }
-  .logo {
-    max-width: 200px; /* Ajusta el tamaño del logo según tu necesidad */
-  }
-  .content {
-    padding: 10px;
-  }
-  .header h1 {
-    margin: 0 auto; /* Centra horizontalmente el h1 */
-  }
-  .footer {
-    text-align: center;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-  }
 
-  .footer img {
-    max-width: 100%;
-    height: auto;
-  }
+
+
 
 
   @media (max-width: 767px) {
