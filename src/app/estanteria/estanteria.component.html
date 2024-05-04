@@ -1,14 +1,17 @@
-<div class="container" style="background-image: url('ruta/a/la/imagen.jpg'); background-size: cover;">
-    <div class="input-group mb-3">
-      <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
+<body>
+    <div class="container">
+        <div class="input-group mb-3">
+          <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
+          </div>
+        </div>
+      
+        <div class="row" *ngFor="let fila of filas; let i = index">
+          <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados[i][j]}">
+            {{ laboratorio }}
+          </div>
+        </div>
       </div>
-    </div>
-  
-    <div class="row" *ngFor="let fila of filas; let i = index">
-      <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados[i][j]}">
-        {{ laboratorio }}
-      </div>
-    </div>
-  </div>
+
+</body>
