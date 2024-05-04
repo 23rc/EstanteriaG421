@@ -8,16 +8,13 @@ body {
     display: flex;
     align-items: center;
     background-color: #f1f1f1;
-    padding: 20px;
+    padding: 10px;
   }
-
   .logo {
-    max-width: 100px; /* Ajusta el tamaño del logo según tu necesidad */
-    margin-right: 20px;
+    max-width: 200px; /* Ajusta el tamaño del logo según tu necesidad */
   }
-
   .content {
-    padding: 20px;
+    padding: 10px;
   }
   .header h1 {
     margin: 0 auto; /* Centra horizontalmente el h1 */
@@ -33,3 +30,16 @@ body {
     max-width: 100%;
     height: auto;
   }
+
+
+  @media (max-width: 767px) {
+    .logo {
+        max-width: 90px; /* Ajusta el tamaño del logo según tu necesidad */
+      }
+  }
+/* Estilos específicos para dispositivos de tamaño de tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .logo {
+        max-width: 150px; /* Ajusta el tamaño del logo según tu necesidad */
+      }
+}
