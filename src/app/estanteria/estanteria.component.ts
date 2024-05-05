@@ -74,5 +74,4 @@ export class EstanteriaComponent {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  
 }

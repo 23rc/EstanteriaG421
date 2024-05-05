@@ -1,51 +1,37 @@
 .container {
-    padding:30px;
-    border-radius: 10px;
+    padding: 20px 30px 0; 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
   }
   .header {
     display: flex;
     align-items: center;
     background-color: #f1f1f1;
-    padding: 10px;
   }
-  
   .logo {
     max-width: 200px; /* Ajusta el tamaño del logo según tu necesidad */
   }
-  
   .content {
     padding: 10px;
-
   }
-  
+  .search-container {
+    background-color: #ffffff;
+    padding: 10px;
+    height: 60px; /* Altura fija del buscador */
+}
   .header h1 {
     margin: 0 auto; /* Centra horizontalmente el h1 */
-
   }
-  
   .row {
     margin-bottom: 10px;
   }
-  
   .col {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: 16px;
   }
-  
-  .search-container {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #fff;
-    padding: 10px;
-  }
-  
-  .estanteria {
-    margin-top: 20px; /* Agrega un espacio entre el buscador y las estanterías */
-  }
+
   
   /* Estilos específicos para dispositivos móviles */
   @media (max-width: 767px) {
@@ -87,12 +73,5 @@
     padding-top: 50px; /* Ajusta el espacio para compensar el buscador flotante */
   }
   
-  .search-container {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 10px; /* Añade margen inferior para evitar superposición con la estantería */
-  }
+
   
