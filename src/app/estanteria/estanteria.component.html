@@ -1,18 +1,18 @@
 <div class="container ">
-    <div class="header" id="estanteria1">
-      <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
-      <h1>ESTANTERÍA 1</h1>
-    </div>
-    <div class="search-container mt-2">
-        <div class="input-group col-sm-6">
-            <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
-            </div>
-        </div>
-    </div>
     <div class="estanteria1" >
       <!-- Estantería 1 -->
+      <div class="header" id="estanteria1">
+        <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
+        <h1>ESTANTERÍA 1</h1>
+      </div>
+      <div class="search-container mt-2 ">
+          <div class="input-group">
+              <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
+              <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
+              </div>
+          </div>
+      </div>
       <div class="row" *ngFor="let fila of estanteria1; let i = index">
         <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados1[i][j]}">
           {{ laboratorio }}
@@ -22,9 +22,16 @@
   
     <div class="header mt-5"id="estanteria2">
       <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
-      <h1 >ESTANTERÍA 2</h1>
+      <h1 >ESTANTERÍA 2 </h1>
     </div>
-
+    <div class="search-container mt-2">
+        <div class="input-group ">
+            <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
+            </div>
+        </div>
+    </div>
     <div class="estanteria1">
       <!-- Estantería 2 -->
       <div class="row" *ngFor="let fila of estanteria2; let i = index">
