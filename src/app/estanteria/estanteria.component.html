@@ -40,6 +40,27 @@
         </div>
       </div>
     </div>
+
+    <div class="header mt-5"id="estanteria3">
+      <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
+      <h1 >ESTANTERÍA 3 </h1>
+    </div>
+    <div class="search-container mt-2">
+        <div class="input-group ">
+            <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <div class="estanteria1">
+      <!-- Estantería 2 -->
+      <div class="row" *ngFor="let fila of estanteria3; let i = index">
+        <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados3[i][j]}">
+          {{ laboratorio }}
+        </div>
+      </div>
+    </div>
     <footer>
       <p>Roberto Carlos Yoxón Cuj</p>
     </footer>

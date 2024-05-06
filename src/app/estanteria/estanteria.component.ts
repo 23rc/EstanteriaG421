@@ -25,9 +25,18 @@ export class EstanteriaComponent {
     ['REWARD', 'ALDO','KERVISION','HEIDELG PHARMA', 'HEIDELG PHARMA', 'LAFAGE', 'LAFAGE', 'BONIN', 'BONIN'],
     ['GAMMA - ADVANTAFARMA', 'BUSSIE - SILANES', 'CHALVER - LAXMI PHARMA.', 'SERVIER', 'SAVAL', 'VIJOSA', 'VIJOSA', 'PIERSAN', 'PIERSAN']
   ];
-
+  estanteria3: string[][] = [
+    ['ALIFARMAT','MSN', 'PFIZER', 'BECTON DICKINSON', 'CANEHAM', 'MOBA', 'ASOFARMA', 'ASOFARMA','ASOFARMA'],
+    ['MELGAR - ROHAPHARMA - NATURAL HEALTH - BERNA - LACER', 'PIERRE FABRE - ASPEN FARMA COHEN - ASOFARMA C', 'MEGALABS (ALMIRALL) - WINDSOR PHARMAC - CORE PHARMA', 'BALIARDA', 'MERZ', 'PABLO CASSARA', 'PROCAPS VITALCARE - DIFPER', 'TRINOMED', 'MALLEN LABORATORIOS'],
+    ['MORE PHARMA - VANQUIMICA - VASSAUX - SANOFI FP - EUROED', 'CORE PHARMA - LIOMONT - ANA MARIA LAJUSTICIA', 'ROCHE-CENDIS - CONAMEP - SANDOZ - GRUNENTHAL', 'LUIGCO - ATRAL CIPAN', 'ACINO - SUED', 'STEIN-OTC - FARDEL', 'SANTA ANA - LAFAR -OFTISOL- OTOPHARM - LANSIER - KLEIN - OPHTHA ', 'SOPHIA - MEGALABS (POEN) - ', 'DERMAPHARM - ALLERGAN - ALCON C - ALFER - BAUSCH YAMP; LOMB ABSON'],
+    ['RUBIO - LUNDBECK - BIOHERAPY - FARMAVIC - LABORATORIOS SIERRA - AB-BOTICS - QUIMIFAR', 'MALTES - LION PHARMA - GOLD FOREST - INFARMA - SNC PHARMA - EUROMED ', 'ITALBIOTIC - ETIK PROACUA', 'PHARMACROSS - SAN LUIS', 'BOEHRINGER - TERAMED ', 'NOVEMED - CHINOIN - ONSITE', 'GLAXO SMITH KLINE ', 'SANOFI', 'SANOFI'],
+    ['MED EQ - CENTRO DE HISTOTERAPIA PLACENTARIA - MONERAUX - ELEA - TROIKAA - BIOMED ', 'PHARMATOR - TRB PHARMA - NEWPORT - KENLY ROCHA - BEXIMCO PHARMA', 'ROLAND LOUIS - ANDIFAR', 'SPLENDA - FAES - BIAL', 'EISAI - SALVAT - LAFCO', 'VIFOR - INC GROSSMAN', 'ANCALMO', 'FRYCIA - COOPERACION LISTO', 'MERCK SHARP DOHME'],
+    ['VACIO', 'LACER - GRUNER MEDIKA - FARMAYA - NATURLIDER', 'PSICOFARMA - ROTTA', 'PRISM', 'LACOFA - PHARBEST', 'DROGUERIA BRULAB - GALENIKA', 'NOVARTIS C - NOVARTIS EXELTIS', 'NOVARTIS', 'NOVATIS'],
+    ['SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS'],
+  ];
   laboratoriosMarcados1: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 1
   laboratoriosMarcados2: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 2
+  laboratoriosMarcados3: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 3
 
   constructor() {
     this.inicializarMarcados();
@@ -39,6 +48,9 @@ export class EstanteriaComponent {
     );
     this.laboratoriosMarcados2 = this.estanteria2.map(() =>
       Array(this.estanteria2[0].length).fill(false)
+    );
+    this.laboratoriosMarcados3 = this.estanteria3.map(() =>
+      Array(this.estanteria3[0].length).fill(false)
     );
   }
 
@@ -63,6 +75,17 @@ export class EstanteriaComponent {
           this.scrollToEstanteria(2);
         } else {
           this.laboratoriosMarcados2[filaIndex][colIndex] = false;
+        }
+      })
+    );
+    // Buscar en la estantería 3
+    this.estanteria3.forEach((fila, filaIndex) =>
+      fila.forEach((laboratorio, colIndex) => {
+        if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
+          this.laboratoriosMarcados3[filaIndex][colIndex] = true;
+          this.scrollToEstanteria(3);
+        } else {
+          this.laboratoriosMarcados3[filaIndex][colIndex] = false;
         }
       })
     );
