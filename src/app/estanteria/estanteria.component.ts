@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-estanteria',
@@ -6,6 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./estanteria.component.css']
 })
 export class EstanteriaComponent {
+  rotated1: boolean = false;
+  rotated2: boolean = false;
+  rotated3: boolean = false;
+
   term: string = ''; // Variable para almacenar el término de búsqueda
   estanteria1: string[][] = [
     ['EUROPHARMA', 'EUROPHARMA', 'EUROPHARMA', 'PHARMALAT', 'PHARMALAT', 'VITABIOTIC', 'BIOCLEAN - BMA PHARMA - GOOD BRANDS', 'FARMAVANZA - FORESTAR - FORESTAR P. - HEPAVAN', 'BELSA - VITAMINA E - ZINC - SUEÑABIEN'],
@@ -97,4 +103,20 @@ export class EstanteriaComponent {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+
+  
+  
+
+  rotarDiv1() {
+    this.rotated1 = !this.rotated1;
+  }
+  rotarDiv2() {
+    this.rotated2 = !this.rotated2;
+  }
+  rotarDiv3() {
+    this.rotated3 = !this.rotated3;
+  }
 }
+  
+
