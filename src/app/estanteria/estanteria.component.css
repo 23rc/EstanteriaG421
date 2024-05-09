@@ -85,7 +85,7 @@ footer {
     }
     .header h1 {
         margin: 0 auto; /* Centra horizontalmente el h1 */
-        font-size: 25px;
+        font-size: 20px;
       }
       footer {
         background-color: rgba(51, 51, 51, 0.1); /* Color con transparencia */
