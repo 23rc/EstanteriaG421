@@ -8,8 +8,8 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./estanteria.component.css']
 })
 export class EstanteriaComponent {
-  rotated1: boolean = false;
-  rotated2: boolean = false;
+  rotated1: boolean = true;
+  rotated2: boolean = true;
   rotated3: boolean = false;
 
   term: string = ''; // Variable para almacenar el término de búsqueda
