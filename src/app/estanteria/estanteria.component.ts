@@ -11,6 +11,7 @@ export class EstanteriaComponent {
   rotated1: boolean = true;
   rotated2: boolean = true;
   rotated3: boolean = false;
+  rotated5: boolean = true;
 
   term: string = ''; // Variable para almacenar el término de búsqueda
   estanteria1: string[][] = [
@@ -40,10 +41,19 @@ export class EstanteriaComponent {
     ['VACIO', 'LACER - GRUNER MEDIKA - FARMAYA - NATURLIDER', 'PSICOFARMA - ROTTA', 'PRISM', 'LACOFA - PHARBEST', 'DROGUERIA BRULAB - GALENIKA', 'NOVARTIS C - NOVARTIS EXELTIS', 'NOVARTIS', 'NOVARTIS'],
     ['SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS', 'SUEROS'],
   ];
+  estanteria5: string[][] = [
+    ['MEGALABS (PANALAB)', 'MEGALABS (ROEMERS)','MEGALABS (ROEMERS)','MEGALABS (ROEMERS)','MEGALABS (ROEMERS)','INTECFA'],
+    ['ABBOT LAFRANCOL COIDE', 'MENARINI','MENARINI','MENARINI','MENARINI','CHINOIN'],
+    ['HIMALAYA HERBAL HEALTCARE','GALOMEDIKAL','GALOMEDIKAL','GALOMEDIKAL','GALOMEDIKAL','LEVEN',],
+    ['KIN LABORATORIOS','BELSA','BELSA','BELSA','BELSA','PHARMOZ - FARMANDINA'],
+    ['CAPLIN','CAPLIN','CAPLIN','CAPLIN','CAPLIN','CAPLIN'],
+    ['WELLCO','QUALIPHARM','QUALIPHARM','QUALIPHARM','QUALIPHARM','NOVALAB'],
+    ['SUEROS','SUEROS','SUEROS','SUEROS','SUEROS','SUEROS'],
+  ];
   laboratoriosMarcados1: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 1
   laboratoriosMarcados2: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 2
   laboratoriosMarcados3: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 3
-
+  laboratoriosMarcados5: boolean[][] = []; 
   constructor() {
     this.inicializarMarcados();
   }
@@ -57,6 +67,9 @@ export class EstanteriaComponent {
     );
     this.laboratoriosMarcados3 = this.estanteria3.map(() =>
       Array(this.estanteria3[0].length).fill(false)
+    );
+    this.laboratoriosMarcados5 = this.estanteria5.map(() =>
+      Array(this.estanteria5[0].length).fill(false)
     );
   }
 
@@ -95,6 +108,17 @@ export class EstanteriaComponent {
         }
       })
     );
+        // Buscar en la estantería 5
+        this.estanteria5.forEach((fila, filaIndex) =>
+          fila.forEach((laboratorio, colIndex) => {
+            if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
+              this.laboratoriosMarcados5[filaIndex][colIndex] = true;
+              this.scrollToEstanteria(5);
+            } else {
+              this.laboratoriosMarcados5[filaIndex][colIndex] = false;
+            }
+          })
+        );
   }
   
   scrollToEstanteria(estanteria: number): void {
@@ -116,6 +140,9 @@ export class EstanteriaComponent {
   }
   rotarDiv3() {
     this.rotated3 = !this.rotated3;
+  }
+  rotarDiv5() {
+    this.rotated5 = !this.rotated5;
   }
 }
   

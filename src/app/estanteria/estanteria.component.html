@@ -74,6 +74,32 @@
     </div>
   </div>
 
+
+   <!-- Estantería 3 -->
+   <div class="estanteria3 mt-5">
+    <div class="header" id="estanteria3">
+      <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
+      <h1>ESTANTERÍA 5 (ATRÁS)</h1>
+    </div>
+    <div class="search-container mt-2">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
+        </div>
+      </div>
+    </div>
+    <!-- <button (click)="rotarDiv3()" class="hidden">
+      <i class="bi bi-arrow-left-right"></i>
+    </button> -->
+
+    <div class="row" [style.transform]="rotated5 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria5; let i = index">
+      <div class="col" [style.transform]="rotated5 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados5[i][j]}">
+        {{ laboratorio }}
+      </div>
+    </div>
+  </div>
+
   <footer>
     <p>Roberto Carlos Yoxón Cuj</p>
   </footer>
