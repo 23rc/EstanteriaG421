@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Estantería 1 -->
-  <div class="estanteria1">
+  <div class="estanteria1" >
     <div class="header" id="estanteria1">
       <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
       <h1>ESTANTERÍA 1 (ENFRENTE)</h1>
@@ -8,7 +8,7 @@
     <div class="search-container mt-2">
       <div class="input-group">
         <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
-        <div class="input-group-append">
+        <div class="input-group-append"  [class.rotated]="rotated1">
           <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
         </div>
       </div>
@@ -76,8 +76,8 @@
 
 
    <!-- Estantería 3 -->
-   <div class="estanteria3 mt-5">
-    <div class="header" id="estanteria3">
+   <div class="estanteria5 mt-5">
+    <div class="header" id="estanteria5">
       <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
       <h1>ESTANTERÍA 5 (ATRÁS)</h1>
     </div>
