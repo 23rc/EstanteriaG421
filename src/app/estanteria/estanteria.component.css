@@ -48,6 +48,7 @@ footer {
     font-size: 14px;
   }
   
+  
   /* Estilos específicos para dispositivos móviles */
   @media (max-width: 767px) {
     .container {
