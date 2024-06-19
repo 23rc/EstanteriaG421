@@ -13,9 +13,9 @@
         </div>
       </div>
     </div>
-    <!-- <button (click)="rotarDiv1()" class="hidden">
+    <button (click)="rotarDiv1()" class="hidden btn-rotate">
       <i class="bi bi-arrow-left-right"></i>
-    </button> -->
+    </button>
 
     <div class="row" [style.transform]="rotated1 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria1; let i = index">
       <div class="col" [style.transform]="rotated1 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados1[i][j]}">
@@ -38,9 +38,9 @@
         </div>
       </div>
     </div>
-    <!-- <button (click)="rotarDiv2()" class="hidden">
+    <button (click)="rotarDiv2()" class="hidden btn-rotate">
       <i class="bi bi-arrow-left-right"></i>
-    </button> -->
+    </button>
 
     <div class="row" [style.transform]="rotated2 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria2; let i = index">
       <div class="col" [style.transform]="rotated2 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados2[i][j]}">
@@ -63,9 +63,9 @@
         </div>
       </div>
     </div>
-    <!-- <button (click)="rotarDiv3()" class="hidden">
+    <button (click)="rotarDiv3()" class="hidden btn-rotate">
       <i class="bi bi-arrow-left-right"></i>
-    </button> -->
+    </button>
 
     <div class="row" [style.transform]="rotated3 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria3; let i = index">
       <div class="col" [style.transform]="rotated3 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados3[i][j]}">
@@ -89,9 +89,9 @@
         </div>
       </div>
     </div>
-    <!-- <button (click)="rotarDiv3()" class="hidden">
+    <button (click)="rotarDiv5()" class="hidden btn-rotate">
       <i class="bi bi-arrow-left-right"></i>
-    </button> -->
+    </button>
 
     <div class="row" [style.transform]="rotated5 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria5; let i = index">
       <div class="col" [style.transform]="rotated5 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados5[i][j]}">

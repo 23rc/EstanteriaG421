@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
-
+import {  HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-estanteria',
   templateUrl: './estanteria.component.html',
   styleUrls: ['./estanteria.component.css']
 })
-export class EstanteriaComponent {
+export class EstanteriaComponent implements AfterViewInit{
   rotated1: boolean = true;
   rotated2: boolean = true;
   rotated3: boolean = false;
@@ -17,7 +17,7 @@ export class EstanteriaComponent {
   estanteria1: string[][] = [
     ['EUROPHARMA', 'EUROPHARMA', 'EUROPHARMA', 'PHARMALAT', 'PHARMALAT', 'VITABIOTIC', 'BIOCLEAN - BMA PHARMA - GOOD BRANDS', 'FARMAVANZA - FORESTAR - FORESTAR P. - HEPAVAN', 'BELSA - VITAMINA E - ZINC - SUEÑABIEN'],
     ['GENOMALAB', 'GENOMALAB', 'PROCTER &AMP GAMBLE', 'NATURAS GARDEN', 'VIZCAINO', 'VIDA', 'FARMEX', 'KRAL', 'KURANTIS'],
-    ['FARMAMEDICA', 'FARMAMEDICA', 'FARMAVANZA', 'FARMAVANZA', 'FARMAVANZA', 'BAGO', 'DOGMA', 'GRUPO PHENIEL', 'GRUPO PHENIEL - NORD PHARMA - SANTE'],
+    ['FARMAMEDICA', 'FARMAMEDICA', 'FARMAVANZA', 'FARMAVANZA', 'FARMAVANZA', 'BAGO', 'DOGMA', 'DENK PHARMA', 'GRUPO PHENIEL - NORD PHARMA - SANTE'],
     ['DONOVAN W.', 'DONOVAN W.', 'DONOVAN W.', 'DONOVAN W.', 'CHEMINTER', 'CHEMINTER', 'CHEMINTER', 'FERRER', 'JOHNSON - PROCAPS - VITALCARE'],
     ['UNIPHARMA', 'UNIPHARMA', 'UNIPHARMA', 'PAIL', 'PHARMADEL', 'FARKOT', 'MIDI PHARMA', 'PROCAPS - JANSEN', 'NIELSEN - VIDES'],
     ['ASTRA ZENECA', 'DALT PHARMA - ALTIAN PHARMA - ASTA MEDICA - EXELTIS','BIOSIDUS - DALT PHARMA - ASTA MEDICA - EXELTIS','FARNET', 'FARMECO - PHARA', 'LUVECK', 'ARSAL', 'GENERIX', 'ARKO PHARMA - LEMONG - GRUPO FARMA'],
@@ -54,8 +54,47 @@ export class EstanteriaComponent {
   laboratoriosMarcados2: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 2
   laboratoriosMarcados3: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 3
   laboratoriosMarcados5: boolean[][] = []; 
+
+  private rotateMethods: { [key: string]: () => void } = {
+    'rotarDiv1': () => this.rotarDiv1(),
+    'rotarDiv2': () => this.rotarDiv2(),
+    'rotarDiv3': () => this.rotarDiv3(),
+    'rotarDiv5': () => this.rotarDiv5(),
+  };
+
   constructor() {
     this.inicializarMarcados();
+  }
+
+  ngAfterViewInit() {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    const width = window.innerWidth;
+    if (width >= 768 && width <= 1024) {
+      this.simulateClick('rotarDiv1');
+      this.simulateClick('rotarDiv2');
+      this.simulateClick('rotarDiv3');
+      this.simulateClick('rotarDiv5');
+    } else if (width < 768) {
+      this.simulateClick('rotarDiv1');
+      this.simulateClick('rotarDiv2');
+      this.simulateClick('rotarDiv3');
+      this.simulateClick('rotarDiv5');
+    }
+  }
+
+  simulateClick(methodName: string) {
+    const method = this.rotateMethods[methodName];
+    if (method) {
+      method();
+    }
   }
 
   inicializarMarcados(): void {
@@ -108,29 +147,25 @@ export class EstanteriaComponent {
         }
       })
     );
-        // Buscar en la estantería 5
-        this.estanteria5.forEach((fila, filaIndex) =>
-          fila.forEach((laboratorio, colIndex) => {
-            if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
-              this.laboratoriosMarcados5[filaIndex][colIndex] = true;
-              this.scrollToEstanteria(5);
-            } else {
-              this.laboratoriosMarcados5[filaIndex][colIndex] = false;
-            }
-          })
-        );
+    // Buscar en la estantería 5
+    this.estanteria5.forEach((fila, filaIndex) =>
+      fila.forEach((laboratorio, colIndex) => {
+        if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
+          this.laboratoriosMarcados5[filaIndex][colIndex] = true;
+          this.scrollToEstanteria(5);
+        } else {
+          this.laboratoriosMarcados5[filaIndex][colIndex] = false;
+        }
+      })
+    );
   }
-  
+
   scrollToEstanteria(estanteria: number): void {
     const el = document.getElementById(`estanteria${estanteria}`);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
-
-  
-  
 
   rotarDiv1() {
     this.rotated1 = !this.rotated1;
@@ -145,5 +180,3 @@ export class EstanteriaComponent {
     this.rotated5 = !this.rotated5;
   }
 }
-  
-
