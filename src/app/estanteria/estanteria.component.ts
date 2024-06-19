@@ -55,11 +55,20 @@ export class EstanteriaComponent implements AfterViewInit{
   laboratoriosMarcados3: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 3
   laboratoriosMarcados5: boolean[][] = []; 
 
+
   private rotateMethods: { [key: string]: () => void } = {
     'rotarDiv1': () => this.rotarDiv1(),
     'rotarDiv2': () => this.rotarDiv2(),
     'rotarDiv3': () => this.rotarDiv3(),
     'rotarDiv5': () => this.rotarDiv5(),
+  };
+
+  // Propiedades para deshabilitar los botones después de ser pulsados
+  buttonClicked: { [key: string]: boolean } = {
+    'rotarDiv1': false,
+    'rotarDiv2': false,
+    'rotarDiv3': false,
+    'rotarDiv5': false,
   };
 
   constructor() {
