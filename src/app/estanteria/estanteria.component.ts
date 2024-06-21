@@ -1,4 +1,4 @@
-import { Component, HostListener, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-estanteria',
@@ -6,10 +6,6 @@ import { Component, HostListener, AfterViewInit } from '@angular/core';
   styleUrls: ['./estanteria.component.css']
 })
 export class EstanteriaComponent implements AfterViewInit {
-  rotated1: boolean = true;
-  rotated2: boolean = true;
-  rotated3: boolean = false;
-  rotated5: boolean = true;
 
   term: string = '';
   estanteria1: string[][] = [
@@ -49,6 +45,7 @@ export class EstanteriaComponent implements AfterViewInit {
     ['SUEROS','SUEROS','SUEROS','SUEROS','SUEROS','SUEROS'],
   ];
 
+
   laboratoriosMarcados1: boolean[][] = [];
   laboratoriosMarcados2: boolean[][] = [];
   laboratoriosMarcados3: boolean[][] = [];
@@ -58,36 +55,7 @@ export class EstanteriaComponent implements AfterViewInit {
     this.inicializarMarcados();
   }
 
-  ngAfterViewInit() {
-    this.checkScreenSize();
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    this.checkScreenSize();
-  }
-
-  checkScreenSize() {
-    const width = window.innerWidth;
-    if (width >= 768 && width <= 1024) {
-      this.simulateClick('rotarDiv1');
-      this.simulateClick('rotarDiv2');
-      this.simulateClick('rotarDiv3');
-      this.simulateClick('rotarDiv5');
-    } else if (width < 768) {
-      this.simulateClick('rotarDiv1');
-      this.simulateClick('rotarDiv2');
-      this.simulateClick('rotarDiv3');
-      this.simulateClick('rotarDiv5');
-    }
-  }
-
-  simulateClick(methodName: string) {
-    const method = this.rotateMethods[methodName];
-    if (method) {
-      method();
-    }
-  }
+  ngAfterViewInit() {}
 
   inicializarMarcados(): void {
     this.laboratoriosMarcados1 = this.estanteria1.map(() => Array(this.estanteria1[0].length).fill(false));
@@ -122,35 +90,4 @@ export class EstanteriaComponent implements AfterViewInit {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
-  rotarDiv1() {
-    this.rotated1 = !this.rotated1;
-  }
-
-  rotarDiv2() {
-    this.rotated2 = !this.rotated2;
-  }
-
-  rotarDiv3() {
-    this.rotated3 = !this.rotated3;
-  }
-
-  rotarDiv5() {
-    this.rotated5 = !this.rotated5;
-  }
-
-  private rotateMethods: { [key: string]: () => void } = {
-    'rotarDiv1': () => this.rotarDiv1(),
-    'rotarDiv2': () => this.rotarDiv2(),
-    'rotarDiv3': () => this.rotarDiv3(),
-    'rotarDiv5': () => this.rotarDiv5(),
-  };
-
-  // Propiedades para deshabilitar los botones después de ser pulsados
-  buttonClicked: { [key: string]: boolean } = {
-    'rotarDiv1': false,
-    'rotarDiv2': false,
-    'rotarDiv3': false,
-    'rotarDiv5': false,
-  };
 }

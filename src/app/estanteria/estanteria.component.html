@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Estantería 1 -->
-  <div class="estanteria1" >
+  <div class="estanteria1 reverse-on-pc">
     <div class="header" id="estanteria1">
       <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
       <h1>ESTANTERÍA 1 (ENFRENTE)</h1>
@@ -8,24 +8,20 @@
     <div class="search-container mt-2">
       <div class="input-group">
         <input type="text" [(ngModel)]="term" class="form-control" placeholder="Buscar laboratorio...">
-        <div class="input-group-append"  [class.rotated]="rotated1">
+        <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button" (click)="realizarBusqueda()">Buscar</button>
         </div>
       </div>
     </div>
-    <button (click)="rotarDiv1()" class="hidden btn-rotate">
-      <i class="bi bi-arrow-left-right"></i>
-    </button>
-
-    <div class="row" [style.transform]="rotated1 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria1; let i = index">
-      <div class="col" [style.transform]="rotated1 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados1[i][j]}">
+    <div class="row" *ngFor="let fila of estanteria1; let i = index">
+      <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados1[i][j]}">
         {{ laboratorio }}
       </div>
     </div>
   </div>
 
   <!-- Estantería 2 -->
-  <div class="estanteria2 mt-5">
+  <div class="estanteria2 mt-5 reverse-on-pc">
     <div class="header" id="estanteria2">
       <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
       <h1>ESTANTERÍA 2 (ENFRENTE)</h1>
@@ -38,12 +34,8 @@
         </div>
       </div>
     </div>
-    <button (click)="rotarDiv2()" class="hidden btn-rotate">
-      <i class="bi bi-arrow-left-right"></i>
-    </button>
-
-    <div class="row" [style.transform]="rotated2 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria2; let i = index">
-      <div class="col" [style.transform]="rotated2 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados2[i][j]}">
+    <div class="row" *ngFor="let fila of estanteria2; let i = index">
+      <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados2[i][j]}">
         {{ laboratorio }}
       </div>
     </div>
@@ -63,20 +55,15 @@
         </div>
       </div>
     </div>
-    <button (click)="rotarDiv3()" class="hidden btn-rotate">
-      <i class="bi bi-arrow-left-right"></i>
-    </button>
-
-    <div class="row" [style.transform]="rotated3 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria3; let i = index">
-      <div class="col" [style.transform]="rotated3 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados3[i][j]}">
+    <div class="row" *ngFor="let fila of estanteria3; let i = index">
+      <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados3[i][j]}">
         {{ laboratorio }}
       </div>
     </div>
   </div>
 
-
-   <!-- Estantería 3 -->
-   <div class="estanteria5 mt-5">
+  <!-- Estantería 5 -->
+  <div class="estanteria5 mt-5 reverse-on-pc">
     <div class="header" id="estanteria5">
       <img src="https://www.farmaciasgaleno.com.gt/Image/SPMedicos/pmdescripcion.png" alt="Logo" class="logo">
       <h1>ESTANTERÍA 5 (ATRÁS)</h1>
@@ -89,12 +76,8 @@
         </div>
       </div>
     </div>
-    <button (click)="rotarDiv5()" class="hidden btn-rotate">
-      <i class="bi bi-arrow-left-right"></i>
-    </button>
-
-    <div class="row" [style.transform]="rotated5 ? 'rotate(180deg)' : ''" *ngFor="let fila of estanteria5; let i = index">
-      <div class="col" [style.transform]="rotated5 ? 'rotate(180deg)' : ''" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados5[i][j]}">
+    <div class="row" *ngFor="let fila of estanteria5; let i = index">
+      <div class="col" *ngFor="let laboratorio of fila; let j = index" [ngClass]="{'bg-success text-white': laboratoriosMarcados5[i][j]}">
         {{ laboratorio }}
       </div>
     </div>
