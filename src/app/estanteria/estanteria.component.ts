@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
-import {  HostListener, AfterViewInit } from '@angular/core';
+import { Component, HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-estanteria',
   templateUrl: './estanteria.component.html',
   styleUrls: ['./estanteria.component.css']
 })
-export class EstanteriaComponent implements AfterViewInit{
+export class EstanteriaComponent implements AfterViewInit {
   rotated1: boolean = true;
   rotated2: boolean = true;
   rotated3: boolean = false;
   rotated5: boolean = true;
 
-  term: string = ''; // Variable para almacenar el término de búsqueda
+  term: string = '';
   estanteria1: string[][] = [
     ['EUROPHARMA', 'EUROPHARMA', 'EUROPHARMA', 'PHARMALAT', 'PHARMALAT', 'VITABIOTIC', 'BIOCLEAN - BMA PHARMA - GOOD BRANDS', 'FARMAVANZA - FORESTAR - FORESTAR P. - HEPAVAN', 'BELSA - VITAMINA E - ZINC - SUEÑABIEN'],
     ['GENOMALAB', 'GENOMALAB', 'PROCTER &AMP GAMBLE', 'NATURAS GARDEN', 'VIZCAINO', 'VIDA', 'FARMEX', 'KRAL', 'KURANTIS'],
@@ -50,26 +48,11 @@ export class EstanteriaComponent implements AfterViewInit{
     ['WELLCO','QUALIPHARM','QUALIPHARM','QUALIPHARM','QUALIPHARM','NOVALAB'],
     ['SUEROS','SUEROS','SUEROS','SUEROS','SUEROS','SUEROS'],
   ];
-  laboratoriosMarcados1: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 1
-  laboratoriosMarcados2: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 2
-  laboratoriosMarcados3: boolean[][] = []; // Matriz para almacenar el estado de marcado de los laboratorios de la estantería 3
-  laboratoriosMarcados5: boolean[][] = []; 
 
-
-  private rotateMethods: { [key: string]: () => void } = {
-    'rotarDiv1': () => this.rotarDiv1(),
-    'rotarDiv2': () => this.rotarDiv2(),
-    'rotarDiv3': () => this.rotarDiv3(),
-    'rotarDiv5': () => this.rotarDiv5(),
-  };
-
-  // Propiedades para deshabilitar los botones después de ser pulsados
-  buttonClicked: { [key: string]: boolean } = {
-    'rotarDiv1': false,
-    'rotarDiv2': false,
-    'rotarDiv3': false,
-    'rotarDiv5': false,
-  };
+  laboratoriosMarcados1: boolean[][] = [];
+  laboratoriosMarcados2: boolean[][] = [];
+  laboratoriosMarcados3: boolean[][] = [];
+  laboratoriosMarcados5: boolean[][] = [];
 
   constructor() {
     this.inicializarMarcados();
@@ -107,85 +90,67 @@ export class EstanteriaComponent implements AfterViewInit{
   }
 
   inicializarMarcados(): void {
-    this.laboratoriosMarcados1 = this.estanteria1.map(() =>
-      Array(this.estanteria1[0].length).fill(false)
-    );
-    this.laboratoriosMarcados2 = this.estanteria2.map(() =>
-      Array(this.estanteria2[0].length).fill(false)
-    );
-    this.laboratoriosMarcados3 = this.estanteria3.map(() =>
-      Array(this.estanteria3[0].length).fill(false)
-    );
-    this.laboratoriosMarcados5 = this.estanteria5.map(() =>
-      Array(this.estanteria5[0].length).fill(false)
-    );
+    this.laboratoriosMarcados1 = this.estanteria1.map(() => Array(this.estanteria1[0].length).fill(false));
+    this.laboratoriosMarcados2 = this.estanteria2.map(() => Array(this.estanteria2[0].length).fill(false));
+    this.laboratoriosMarcados3 = this.estanteria3.map(() => Array(this.estanteria3[0].length).fill(false));
+    this.laboratoriosMarcados5 = this.estanteria5.map(() => Array(this.estanteria5[0].length).fill(false));
   }
 
   realizarBusqueda(): void {
-    // Buscar en la estantería 1
-    this.estanteria1.forEach((fila, filaIndex) =>
+    this.buscarEnEstanteria(this.estanteria1, this.laboratoriosMarcados1, 1);
+    this.buscarEnEstanteria(this.estanteria2, this.laboratoriosMarcados2, 2);
+    this.buscarEnEstanteria(this.estanteria3, this.laboratoriosMarcados3, 3);
+    this.buscarEnEstanteria(this.estanteria5, this.laboratoriosMarcados5, 5);
+  }
+
+  buscarEnEstanteria(estanteria: string[][], marcados: boolean[][], numeroEstanteria: number): void {
+    estanteria.forEach((fila, filaIndex) =>
       fila.forEach((laboratorio, colIndex) => {
         if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
-          this.laboratoriosMarcados1[filaIndex][colIndex] = true;
-          this.scrollToEstanteria(1);
+          marcados[filaIndex][colIndex] = true;
+          this.scrollToEstanteria(numeroEstanteria);
         } else {
-          this.laboratoriosMarcados1[filaIndex][colIndex] = false;
-        }
-      })
-    );
-  
-    // Buscar en la estantería 2
-    this.estanteria2.forEach((fila, filaIndex) =>
-      fila.forEach((laboratorio, colIndex) => {
-        if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
-          this.laboratoriosMarcados2[filaIndex][colIndex] = true;
-          this.scrollToEstanteria(2);
-        } else {
-          this.laboratoriosMarcados2[filaIndex][colIndex] = false;
-        }
-      })
-    );
-    // Buscar en la estantería 3
-    this.estanteria3.forEach((fila, filaIndex) =>
-      fila.forEach((laboratorio, colIndex) => {
-        if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
-          this.laboratoriosMarcados3[filaIndex][colIndex] = true;
-          this.scrollToEstanteria(3);
-        } else {
-          this.laboratoriosMarcados3[filaIndex][colIndex] = false;
-        }
-      })
-    );
-    // Buscar en la estantería 5
-    this.estanteria5.forEach((fila, filaIndex) =>
-      fila.forEach((laboratorio, colIndex) => {
-        if (laboratorio.toLowerCase().includes(this.term.toLowerCase())) {
-          this.laboratoriosMarcados5[filaIndex][colIndex] = true;
-          this.scrollToEstanteria(5);
-        } else {
-          this.laboratoriosMarcados5[filaIndex][colIndex] = false;
+          marcados[filaIndex][colIndex] = false;
         }
       })
     );
   }
 
-  scrollToEstanteria(estanteria: number): void {
-    const el = document.getElementById(`estanteria${estanteria}`);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  scrollToEstanteria(numeroEstanteria: number): void {
+    const element = document.getElementById(`estanteria${numeroEstanteria}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
   rotarDiv1() {
     this.rotated1 = !this.rotated1;
   }
+
   rotarDiv2() {
     this.rotated2 = !this.rotated2;
   }
+
   rotarDiv3() {
     this.rotated3 = !this.rotated3;
   }
+
   rotarDiv5() {
     this.rotated5 = !this.rotated5;
   }
+
+  private rotateMethods: { [key: string]: () => void } = {
+    'rotarDiv1': () => this.rotarDiv1(),
+    'rotarDiv2': () => this.rotarDiv2(),
+    'rotarDiv3': () => this.rotarDiv3(),
+    'rotarDiv5': () => this.rotarDiv5(),
+  };
+
+  // Propiedades para deshabilitar los botones después de ser pulsados
+  buttonClicked: { [key: string]: boolean } = {
+    'rotarDiv1': false,
+    'rotarDiv2': false,
+    'rotarDiv3': false,
+    'rotarDiv5': false,
+  };
 }
