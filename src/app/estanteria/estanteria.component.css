@@ -62,6 +62,18 @@ footer {
     display: flex;
     flex-direction: row-reverse; /* Invierte el orden de los elementos en estanterías marcadas */
   }
+  .header {
+    position: relative; /* Necesario para que la posición absoluta de la imagen flotante sea relativa a .header */
+  }
+  
+  .floating-image {
+    position: absolute;
+    right: 50px; /* Ajusta según sea necesario */
+    top: 40%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajuste de la posición */
+    width: 120px; /* Ajusta el tamaño según tus necesidades */
+  }
+  
 }
 /* Estilos específicos para dispositivos móviles */
 @media (max-width: 767px) {
@@ -100,6 +112,17 @@ footer {
     display: flex;
     flex-direction: row-reverse; /* Invierte el orden de los elementos en estanterías marcadas */
   }
+  .header {
+    position: relative; /* Necesario para que la posición absoluta de la imagen flotante sea relativa a .header */
+  }
+  
+  .floating-image {
+    position: absolute;
+    right: 70px; /* Ajusta según sea necesario */
+    top: 90%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajuste de la posición */
+    width: 60px; /* Ajusta el tamaño según tus necesidades */
+  }
 }
 /* Estilos específicos para dispositivos de tamaño de tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -117,6 +140,17 @@ footer {
   }
   button.hidden {
     display: none;
+  }
+  .header {
+    position: relative; /* Necesario para que la posición absoluta de la imagen flotante sea relativa a .header */
+  }
+  
+  .floating-image {
+    position: absolute;
+    right: 70px; /* Ajusta según sea necesario */
+    top: 75%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajuste de la posición */
+    width: 75px; /* Ajusta el tamaño según tus necesidades */
   }
 }
 
